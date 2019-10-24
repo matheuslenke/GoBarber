@@ -1,0 +1,11 @@
+{
+  "name": "GoBarber",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/matheuslenke/GoBarber.git",
+  "author": "matheuslenke <matheus.l.coutinho@aluno.ufes.br>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
