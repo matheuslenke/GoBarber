@@ -5,6 +5,9 @@
   "repository": "https://github.com/matheuslenke/GoBarber.git",
   "author": "matheuslenke <matheus.l.coutinho@aluno.ufes.br>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
   },
