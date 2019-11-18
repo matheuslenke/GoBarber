@@ -25,6 +25,15 @@ class User extends Model {
     return this;
   }
 
+  /**
+   * Criando associação com a tabela de avatar
+   * @param {models} models - Possui todos os models da aplicação
+   * Existem vários métodos de relacionamento, como o HasOne, HasMany
+   */
+  static associate(models) {
+    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
+  }
+
   checkPassword(password) {
     return bcrypt.compare(password, this.password_hash);
   }
