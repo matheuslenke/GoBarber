@@ -31,7 +31,7 @@ class User extends Model {
    * Existem vários métodos de relacionamento, como o HasOne, HasMany
    */
   static associate(models) {
-    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
+    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
   }
 
   checkPassword(password) {
