@@ -10,6 +10,7 @@ module.exports = {
     SharedArrayBuffer: "readonly",
     __DEV__: true
   },
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -36,7 +37,8 @@ module.exports = {
   settings: {
     "import/resolver": {
       "babel-plugin-root-import": {
-        rootPathSuffix: "src"
+        "rootPathPrefix": "@",
+        "rootPathSuffix": "src"
       },
     },
   },
