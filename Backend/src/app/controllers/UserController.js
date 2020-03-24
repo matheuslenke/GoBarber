@@ -59,29 +59,31 @@ class UserController {
     if (email !== user.email) {
       const userExists = await User.findOne({ where: { email } });
 
-      if (userExists) {
-        return res.status(400).json({ error: 'User already exists' });
+      if (!userExists) {
+        return res.status(400).json({ error: 'User does not exists' });
       }
     }
 
     if (oldPassword && !(await user.checkPassword(oldPassword))) {
       return res.status(401).json({ error: 'Password does not match' });
     }
+    await user.update(req.body);
 
-    const {id, name, avatar} = await User.findByPk(req.userId,
+    const { id, name, avatar } = await User.findByPk(req.userId, {
       include: [
         {
           model: File,
           as: 'avatar',
           attributes: ['id', 'path', 'url'],
-        }
-      ])
+        },
+      ],
+    });
 
     return res.json({
       id,
       name,
       email,
-      avatar
+      avatar,
     });
   }
 }
