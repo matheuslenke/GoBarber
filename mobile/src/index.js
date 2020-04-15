@@ -1,5 +1,9 @@
+import 'react-native-gesture-handler';
+
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+
+import Routes from './routes';
 
 import '~/config/ReactotronConfig';
 
@@ -12,11 +16,6 @@ const styles = StyleSheet.create({
   },
 });
 
-console.tron.log('Hello world');
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to React Native</Text>
-    </View>
-  );
+  return <Routes isLoggedIn={false} />;
 }
