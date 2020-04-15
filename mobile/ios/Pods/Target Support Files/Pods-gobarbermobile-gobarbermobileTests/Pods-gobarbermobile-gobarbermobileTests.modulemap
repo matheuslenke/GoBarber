@@ -1,0 +1,6 @@
+module Pods_gobarbermobile_gobarbermobileTests {
+  umbrella header "Pods-gobarbermobile-gobarbermobileTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
