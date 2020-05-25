@@ -60,7 +60,7 @@ export default function Profile() {
         <Form>
           <FormInput
             icon="person-outline"
-            autoCorret={false}
+            autoCorrect={false}
             autoCapitalize="words"
             placeholder="Nome completo"
             returnKeyType="next"
@@ -71,7 +71,7 @@ export default function Profile() {
           <FormInput
             icon="mail-outline"
             keyboardType="email-address"
-            autoCorret={false}
+            autoCorrect={false}
             autoCapitalize="none"
             placeholder="Digite seu e-mail"
             ref={emailRef}

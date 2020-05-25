@@ -122,7 +122,7 @@ function SignedInTabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Home"
+        name="Profile"
         component={Profile}
         options={{
           tabBarLabel: 'Meu Perfil',

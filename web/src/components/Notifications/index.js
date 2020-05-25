@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { MdNotifications } from 'react-icons/md';
 import { parseISO, formatDistance } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import socketio from 'socket.io-client';
 
 import api from '~/services/api';
 
@@ -21,8 +23,27 @@ export default function Notifications() {
     () =>
       !!notifications.find(notification => notification.read === false, [
         notifications,
-      ])
+      ]),
+    [notifications]
   );
+
+  const user = useSelector(state => state.user.profile);
+
+  const socket = useMemo(
+    () =>
+      socketio('http://localhost:3333', {
+        query: {
+          user_id: user.id,
+        },
+      }),
+    [user.id]
+  );
+
+  useEffect(() => {
+    socket.on('notification', notification => {
+      setNotifications([notification, ...notifications]);
+    });
+  }, [socket, notifications]);
 
   useEffect(() => {
     async function loadNotifications() {
@@ -41,7 +62,7 @@ export default function Notifications() {
     }
 
     loadNotifications();
-  }, []);
+  }, [notifications]);
 
   function handleToggleVisible() {
     setVisible(!visible);
